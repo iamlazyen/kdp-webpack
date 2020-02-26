@@ -9,6 +9,16 @@ module.exports = {
     filename: '[name].[hash:8].js',
     path: path.resolve(__dirname, '../dist')
   },
+  rules: [
+    {
+      test:/\.css$/,
+      use:['style-loader','css-loader']
+    },
+    {
+      test:/\.less$/,
+      use:['style-loader','css-loader','less-loader']
+    }
+  ],
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html')
