@@ -5,15 +5,19 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
+const webpack = require('webpack')
 
 module.exports = WebpackMerge(webpackConfig,{
   mode:'production',
   devtool:'cheap-module-source-map',
   plugins:[
-    new CopyWebpackPlugin([{
-      from:path.resolve(__dirname,'../public'),
-      to:path.resolve(__dirname,'../dist')
-    }]),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./vendor-manifest.json')
+    }),
+    new CopyWebpackPlugin([ // 拷贝生成的文件到dist目录 这样每次不必手动去cv
+      {from: 'static', to:'static'}
+    ]),
   ],
   optimization:{
     minimizer:[
