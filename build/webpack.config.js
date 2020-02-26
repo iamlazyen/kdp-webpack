@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const vueLoaderPlugin = require('vue-loader/lib/plugin')
+const Webpack = require('webpack')
 
 module.exports = {
   mode: 'development',
@@ -104,7 +105,13 @@ module.exports = {
     },
     extensions:['*','.js','.json','.vue']
   },
+  devServer:{
+    port:3000,
+    hot:true,
+    contentBase:'../dist'
+  },
   plugins: [
+    new Webpack.HotModuleReplacementPlugin(),
     new vueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html')
