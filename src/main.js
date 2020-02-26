@@ -1,3 +1,7 @@
 import './assets/css/index.less'
 
-console.log('test')
+const test = () => {
+  console.log(1)
+}
+
+test()
