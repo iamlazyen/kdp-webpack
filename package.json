@@ -1,0 +1,16 @@
+{
+  "name": "kdp-webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/iamlazyen/kdp-webpack.git",
+  "author": "depeng <kongdepeng520@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config build/webpack.config.js"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  }
+}
